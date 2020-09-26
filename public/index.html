@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CoderDojo Linz | Chat Beispiel</title>
+
+    <script type="text/javascript" src="microbit.umd.js"></script>
+
+
+    <script>
+        (function () {
+            var a = 10;
+            var b = Math.random();
+            document.write(a * b);
+            //document.write(freemem);
+
+        })()
+        var j = 0;
+        // setInterval(function () {
+        //     j++;
+        //     //document.writeln(j);
+        //     document.getElementById("hh").innerText = j;
+        //     //console.log(j);
+        // }, 1000);
+
+        
+        console.log(microbit);    
+        async function get_device() {
+            const device = await microbit.requestMicrobit(window.navigator.bluetooth);
+            return device 
+        }
+        async function get_services() {
+            services = await microbit.getServices(device);
+            return services
+        }
+        get_device();
+
+        function braucheMeineZeit(x) {
+            var erg=new Promise(function (resolve) {
+                setTimeout(() => {
+                    resolve("ja geschafft");
+                },2000 );
+            });
+
+            return erg
+        }
+
+        async function f1() {
+            console.log("warten auf antwort!")
+            var x = await braucheMeineZeit(10);
+            console.log("habe gewartet - ", x); // 10
+        }
+        //f1();
+
+        console.log("weiter")
+    </script>
+
+
+</head>
+
+<body>
+    <h1 id="hh">Hallo Chat!</h1>
+    <h2>Eine Webseite</h2>
+
+    <a href="https://coderdojoluzern.ch/trainingsanleitungen/web/nodejs-webserver.html" target="_blank">Stammt von
+        dieser WEB-Seite</a><br>
+    <a href="https://linz.coderdojo.net/uebungsanleitungen/programmieren/web/nodejs-socketio-chat/"
+        target="_blank">Stammt von dieser WEB-Seite</a>
+
+</body>
+
+</html>
